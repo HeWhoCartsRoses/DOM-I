@@ -36,10 +36,10 @@ const siteContent = {
     "copyright": "Copyright Great Idea! 2018"
   },
 };
-function pseudo(content, tag, section) {
+function pseudo(content) {
   let head = siteContent.nav;
   let cta = siteContent.cta;
-  this.main = siteContent["main-content"];
+  let main = siteContent["main-content"];
   let con = siteContent.contact;
   let foot = siteContent.footer;
   if (content === 'nav') {
@@ -55,23 +55,30 @@ function pseudo(content, tag, section) {
     button[0].textContent = (cta['button'])
   }
   else if (content === 'body') {
-    //console.log(main[`${tag}-h4`])
+    let vars = (Object.keys(main));
+    vars.splice(4, 1)
+    console.log(vars);
+    let body = document.querySelectorAll('.text-content h4, .text-content p');
+    console.log(body);
+    for (var i = 0; i < vars.length; i++) {
+      body[i].textContent = (main[vars[i]])
+    }
   }
-
   else if (content === 'con') {
     let head = document.querySelectorAll('.contact h4');
     head[0].textContent = (con['contact-h4'])
-    // let info = document.querySelectorAll('contact p');
-    // console.log(info);
-    // Array.from(info).forEach(link => {
-    //   console.log(con[link + 1]);
-    //   link.textContent = (con[link + 1])
-    // });
     let arr = ['123 Way 456 Street Somewhere, USA', '1 (888) 888-8888', 'sales@greatidea.io']
     let info = document.querySelectorAll('.contact p');
+    console.log(info)
     for (var i = 0; i < arr.length; i++) {
       info[i].textContent = (arr[i])
     }
+    console.log(info.textContent)
+  }
+  else if (content === 'foot') {
+    let foot2 = document.querySelectorAll('footer p');
+    foot2[0].textContent = (foot['copyright'])
+    console.log(foot.textContent)
   }
 
 
@@ -84,5 +91,6 @@ img2.src = 'img/header-img.png';
 img3.src = 'img/mid-page-accent.jpg';
 console.log(pseudo('nav'));
 console.log(pseudo('cta'));
-console.log(pseudo('body', 'features', 'main'));
+console.log(pseudo('body'));
 console.log(pseudo('con'));
+console.log(pseudo('foot'));
