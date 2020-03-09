@@ -36,7 +36,7 @@ const siteContent = {
     "copyright": "Copyright Great Idea! 2018"
   },
 };
-function pseudo(content) {
+function pseudo() {
   let img1 = document.querySelector('#logo-img');
   let img2 = document.querySelector('#cta-img');
   let img3 = document.querySelector('#middle-img');
